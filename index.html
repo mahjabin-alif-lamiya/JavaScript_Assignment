@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Tracker</title>
+   
+      
+    <!-- Tailwind + DaisyUI -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- FondOwsome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Fond -->
+     <style>
+        *{
+              font-family: "Outfit", sans-serif;
+        }
+     </style>
+     
+
+</head>
+<body class="bg-[#F8FAFC] pb-[20px] ">
+    <header class="w-[80%] mx-auto">
+       
+            <h1 class="text-6xl font-bold py-10">Job Tracker</h1>
+            <div  class="grid grid-cols-3 gap-4">
+                <div class="show-job bg-white shadow-lg text-center h-full p-4">
+                    <p>Total</p>
+                    <h2 id="total-job" class="font-bold">8</h2>
+                </div>
+                <div class="show-job bg-white shadow-lg text-center h-full p-4">
+                    <p>Interviews</p>
+                    <h2 id="all-interviews" class="text-green-500 font-bold">8</h2>
+                </div>
+                <div class="show-job bg-white shadow-lg text-center h-full p-4">
+                    <p>Rejected</p>
+                    <h2 id="all-rejected" class="text-red-500 font-bold">8</h2>
+                </div>
+                
+            </div>
+       
+
+    </header>
+    <div class="w-[80%] mx-auto h-[1px] bg-[#d2d0d0] my-15"></div>
+    <main class="w-[80%] mx-auto">
+
+        <section class="">
+            
+            <div class="flex justify-between">
+            <h2 class="text-3xl font-bold pb-4">Available Jobs</h2>
+            <p id="TotalNumberOfJob" class="text-[#565656]">8 jobs</p>      
+            </div>
+            
+            <div class="flex gap-4 py-4 ">
+            <button id="all-jobFilter" class="btn btn-primary" onclick="togglestyle('all-jobFilter')">All</button>
+            <button id="all-interviewfilter" class="btn btn-outline" onclick="togglestyle('all-interviewfilter')">Interviews</button>
+            <button id="all-rejectedfilter" class="btn btn-outline" onclick="togglestyle('all-rejectedfilter')">Rejected</button>
+            </div>
+
+            </section>
+
+            <!-- Filter Job -->
+             <section id="filtered-section" class="hidden">
+
+             </section>
+
+             <!-- Empty-job section -->
+
+           <section id="empty-section" class="hidden">
+                
+        <div class="flex justify-center items-center flex-col text-center bg-white py-4 mt-[10px] pl-4 shadow-lg rounded-lg space-y-2 w-full min-h-[300px] mb-[200px]">
+        <div class="">
+            <i class="fa-solid fa-file-lines text-6xl text-[#018bd4]"></i>
+        </div>
+        <div>
+            <h3>No Jobs Available</h3>
+            <p class="text-[#5c5b5b]">Check back soon for new job opportunities</p>
+        </div>
+
+    </div>
+                    
+</section>
+               
+
+             </section>
+            
+            <!-- job card -->
+        <section id="all-jobs" class="py-4 ">
+            
+                <div class="job-card bg-white py-4 mt-[10px] pl-4 shadow-lg rounded-lg">
+                    <div class="flex justify-between ">
+                        <h2 class="job-name text-2xl font-bold mt-3">Moblie First Crop</h2>
+                        <button class="delete-job btn btn-soft bg-transparent mx-4 rounded-[50%] text-1xl px-1 py-1"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                    
+                    <p class="job-title mb-4 text-[#565656]">React Native Developer</p>
+                    <p class="job-salary mb-4 text-[#565656]">Remote . Full-time . $130,000 -$175,000</p>
+                    <h4 class="job-status bg-blue-100 rounded-lg p-2 inline-block mb-4">NOT APPLIED</h4>
+                    <p class="job-end-title text-[#565656]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+
+                    <div class="py-4 flex gap-4">
+                        <button class="interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                        <button class="reject-btn btn btn-outline btn-error">REJECTED</button>
+                    </div>
+
+                </div>
+                <div class="job-card bg-white py-4 mt-[10px] pl-4 shadow-lg rounded-lg">
+                    <div class="flex justify-between ">
+                        <h2 class="job-name text-2xl font-bold mt-3">Moblie First Crop</h2>
+                        <button class="delete-job btn btn-soft bg-transparent mx-4 rounded-[50%] text-1xl px-1 py-1"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                    
+                    <p class="job-title mb-4 text-[#565656]">React Native Developer</p>
+                    <p class="job-salary mb-4 text-[#565656]">Remote . Full-time . $130,000 -$175,000</p>
+                    <h4 class="job-status bg-blue-100 rounded-lg p-2 inline-block mb-4">NOT APPLIED</h4>
+                    <p class="job-end-title text-[#565656]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+
+                    <div class="py-4 flex gap-4">
+                        <button id="gate-interview" class="interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                        <button id="gate-rejected" class="reject-btn btn btn-outline btn-error">REJECTED</button>
+                    </div>
+
+                </div>
+                <div class="job-card bg-white py-4 mt-[10px] pl-4 shadow-lg rounded-lg">
+                    <div class="flex justify-between ">
+                        <h2 class="job-name text-2xl font-bold mt-3">Moblie First Crop</h2>
+                        <button class="delete-job btn btn-soft bg-transparent mx-4 rounded-[50%] text-1xl px-1 py-1"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                    
+                    <p class="job-title mb-4 text-[#565656]">React Native Developer</p>
+                    <p class="job-salary mb-4 text-[#565656]">Remote . Full-time . $130,000 -$175,000</p>
+                    <h4 class="job-status bg-blue-100 rounded-lg p-2 inline-block mb-4">NOT APPLIED</h4>
+                    <p class="job-end-title text-[#565656]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+
+                    <div class="py-4 flex gap-4">
+                        <button id="gate-interview" class="interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                        <button id="gate-rejected" class="reject-btn btn btn-outline btn-error">REJECTED</button>
+                    </div>
+
+                </div>
+              
+                
+
+               
+           
+           
+                
+           
+        
+
+        </section>
+
+    </main>
+ <script src="./script/script.js"></script>   
+</body>
+</html>
